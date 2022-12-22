@@ -1,0 +1,7 @@
+#!/usr/bin/env php
+<?php
+
+define('SCOOB_START', microtime(true));
+
+require __DIR__.'/vendor/autoload.php';
+

@@ -1,0 +1,18 @@
+{
+    "name": "shieldforce/easy-docker",
+    "description": "Ajudar os devs a lidar com Dockers",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Shieldforce\\EasyDocker\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexandre Ferreira",
+            "email": "shieldforce2@gmail.com"
+        }
+    ],
+    "require": {}
+}
