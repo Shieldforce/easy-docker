@@ -14,5 +14,7 @@
             "email": "shieldforce2@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^7.4"
+    }
 }
