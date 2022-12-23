@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo "teste";
+path="$(pwd)/vendor/shieldforce/easy-docker/src/scoob"
+
+echo "alias scoob=php ${path}" >> ~/.bashrc;
