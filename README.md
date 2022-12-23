@@ -9,5 +9,5 @@ composer require shieldforce/easy-docker
 
 #### Rode o comando para criar atalhos, assim vamos facilitar nosso trabalho:
 ```
-bash $(pwd)/vendor/shieldforce/easy-docker/src/start/run.sh
+bash vendor/shieldforce/easy-docker/src/start/run.sh
 ```
