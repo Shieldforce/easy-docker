@@ -78,9 +78,26 @@ class ImplementPHP
 
     private static function dockerRun()
     {
+
+        if(!isset(self::$version)) {
+            StringError::getErrorArg("--version");
+            return;
+        }
+
+        if(!isset(self::$port)) {
+            StringError::getErrorArg("--port");
+            return;
+        }
+
+        if(!isset(self::$container)) {
+            StringError::getErrorArg("--container");
+            return;
+        }
+
         $version    = self::$version;
         $port       = self::$port;
         $container  = self::$container;
+
         $path       = str_replace(["/Execute/Implements"], [""], __DIR__);
         exec($path."/dockers/php/{$version}/run.sh {$version} {$port} {$container}", $output);
         print_r($output);
