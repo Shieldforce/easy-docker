@@ -73,7 +73,7 @@ class ExecuteArgs
         foreach ($class_methods as $method) {
             if(
                 array_search($method, [
-                "run", "execArgs", "validArgs", "getMethods", "descriptions"
+                "run", "execArgs", "validArgs", "getMethods", "descriptions", "vendor/shieldforce/easy-docker/scoob"
                 ])===false
             ) {
                 $arrayMethods[] = $method;
