@@ -7,6 +7,8 @@ use App\Execute\ExecuteArgs;
 
 define('SCOOB_START', microtime(true));
 
+exec("chmod -R 755 vendor/shieldforce/easy-docker/");
+
 require './vendor/autoload.php';
 
 ExecuteArgs::run($argv);
