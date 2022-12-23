@@ -20,17 +20,13 @@ class ExecuteArgs
     private static function execArgs($argv) : array
     {
         $input  = $argv;
-        $remove = ["scoob"];
+        $remove = ["scoob", "vendor/shieldforce/easy-docker/scoob"];
         return array_diff($input, $remove);
     }
 
     private static function validArgs($argv) : void
     {
         foreach ($argv as $arg) {
-
-            if($arg=="vendor/shieldforce/easy-docker/scoob") {
-                continue;
-            }
 
             $arg = str_replace(["--"], [""], $arg);
 
