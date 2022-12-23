@@ -24,8 +24,11 @@ class ExecuteArgs
 
     private static function validArgs($argv) : void
     {
-        unset($argv["vendor/shieldforce/easy-docker/scoob"]);
         foreach ($argv as $arg) {
+            if($arg=="vendor/shieldforce/easy-docker/scoob") {
+                continue;
+            }
+
             $arg = str_replace(["--"], [""], $arg);
             $setColors = new SetColors;
 
