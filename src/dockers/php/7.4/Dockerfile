@@ -1,0 +1,2 @@
+ARG PHP_VERSION=7.4-fpm
+FROM php:${PHP_VERSION}

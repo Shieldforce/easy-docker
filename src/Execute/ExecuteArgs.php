@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Execute;
 
 use App\Colors\SetColors;
+use App\Execute\Errors\StringError;
+use App\Execute\Implements\ImplementPHP;
 
 class ExecuteArgs
 {
@@ -25,41 +27,35 @@ class ExecuteArgs
     private static function validArgs($argv) : void
     {
         foreach ($argv as $arg) {
+
             if($arg=="vendor/shieldforce/easy-docker/scoob") {
                 continue;
             }
 
             $arg = str_replace(["--"], [""], $arg);
-            $setColors = new SetColors;
 
-            if (!method_exists(new ExecuteArgs, $arg)) {
-                echo "\n";
-                echo "---- Inicio do  Erro ----------------------------------------- \n";
-                echo "\n";
-                echo "---- Argumento ({$setColors->setEffect('red')}{$arg}";
-                echo "{$setColors->setEffect('end')}) é inválido! \n";
-                echo "\n";
-                echo "---- Final do  Erro ------------------------------------------ \n";
-                echo "\n";
-                break;
+            if (method_exists(new ExecuteArgs, $arg)) {
+                self::$arg($arg, $argv);
+                return;
             }
 
-            self::$arg($arg);
+            StringError::getErrorArg($arg);
+
         }
     }
 
-    private static function help($arg)
+    private static function help($arg, $argv)
     {
         $setColors = new SetColors;
 
         echo "\n";
         echo "---- {$setColors->setEffect('blue')} Inicio da Ajuda ";
         echo "{$setColors->setEffect('end')} ---------------------------------------------------------------- \n";
+        echo "\n";
 
         foreach (self::getMethods() as $method) {
             $description = self::descriptions($method);
 
-            echo "\n";
             echo "{$setColors->setEffect('green')}#### {$setColors->setEffect('end')}";
             echo "(--{$method}) : {$description} \n";
             echo "\n";
@@ -89,8 +85,15 @@ class ExecuteArgs
     private static function descriptions($method) : string
     {
         $return =  [
-            "help" => "Este argumento fornece uma lista de ajuda para o usuário!"
+            "help" => "Este argumento fornece uma lista de ajuda para o usuário!",
+            "php"  => "Este comando sobe um container com o PHP mais a --version= informada, 
+            se não passar versão, será considerado a última!",
         ];
         return $return[$method] ?? "";
+    }
+
+    private static function php($arg, $argv)
+    {
+        ImplementPHP::run($argv);
     }
 }

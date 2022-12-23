@@ -11,3 +11,8 @@ composer require shieldforce/easy-docker
 ```
 bash vendor/shieldforce/easy-docker/src/start/run.sh
 ```
+
+#### Rode o comando para atualizar o arquivo de configuração do usuário:
+```
+source ~/.bashrc
+```
