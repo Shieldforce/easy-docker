@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Shieldforce\\EasyDocker\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
