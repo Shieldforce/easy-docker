@@ -4,7 +4,7 @@
 path="/vendor/shieldforce/easy-docker/src/scoob"
 
 echo "" >> ~/.bashrc;
-echo "alias scoob='${path}'" >> ~/.bashrc;
+echo "alias scoob='php ${path}'" >> ~/.bashrc;
 source ~/.bashrc
 
 echo "Alias criado com sucesso!"
