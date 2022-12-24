@@ -8,7 +8,7 @@ fi
 version=$1
 port=$2
 container=$3
-remount=$4
+remount=$5
 root_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
 
 docker build \
