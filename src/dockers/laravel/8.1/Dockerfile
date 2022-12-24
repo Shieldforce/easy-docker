@@ -26,6 +26,10 @@ RUN cd $APP_DIR
 RUN chmod 755 -R *
 RUN chown -R www-data: *
 
+# Create dir for mariadb
+RUN mkdir -p $MARIADB_MYSQL_SOCKET_DIRECTORY && \
+    chmod 777 $MARIADB_MYSQL_SOCKET_DIRECTORY
+
 # First update packegist
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
