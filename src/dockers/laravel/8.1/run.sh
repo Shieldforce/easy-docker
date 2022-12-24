@@ -20,7 +20,7 @@ if [ $remount == "--build" ]; then
    docker image rm ${container}
 fi
 
-dir=docker_scoob/php/$version
+dir=docker_scoob/laravel/$version
 
 if [ -d $dir ]; then
   echo "Diretório Docker ok!"
