@@ -76,6 +76,8 @@ RUN apt-get install -y net-tools
 
 EXPOSE ${EXPOSE_PORT}
 
+ENTRYPOINT ["${ROOT_DIR}/docker/run.sh"]
+
 # finish dockerfile
 ADD ${ROOT_DIR}/docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
 ADD ${ROOT_DIR}/docker/supervisord/conf /etc/supervisord.d/
