@@ -48,7 +48,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get install redis-server -y
 RUN pecl install redis-${REDIS_LIB_VERSION} \
     && docker-php-ext-enable redis
-COPY ${ROOT_DIR}docker_scoob/laravel/8.1/docker/redis/redis.conf /etc/redis/redis.conf
+COPY ${ROOT_DIR}docker_scoob/laravel/8.1/redis/redis.conf /etc/redis/redis.conf
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -78,9 +78,9 @@ RUN apt-get install -y wget
 RUN apt-get install --no-install-recommends -y mariadb-server
 RUN apt-get install --no-install-recommends -y mariadb-client
 RUN apt-get update
-COPY ${ROOT_DIR}docker_scoob/laravel/8.1/docker/mariadb/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ${ROOT_DIR}docker_scoob/laravel/8.1/mariadb/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN chmod 0644 /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ${ROOT_DIR}docker_scoob/laravel/8.1/docker/mariadb/create-bd.sql /docker-entrypoint-initdb.d/
+COPY ${ROOT_DIR}docker_scoob/laravel/8.1/mariadb/create-bd.sql /docker-entrypoint-initdb.d/
 
 #Install systemd
 RUN apt-get install -y systemd
