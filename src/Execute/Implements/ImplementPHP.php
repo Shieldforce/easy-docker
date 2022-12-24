@@ -10,6 +10,8 @@ class ImplementPHP
     private static string $port;
     private static string $container;
 
+    private static string $remount;
+
     public static function run($argv)
     {
         $argsMount = [];
@@ -77,6 +79,13 @@ class ImplementPHP
         self::$container = $containerValue;
     }
 
+    private static function remount($arg)
+    {
+        if(strpos($arg, "--remount")!==false) {
+            self::$remount = "--remount";
+        }
+    }
+
     private static function dockerRun()
     {
 
@@ -100,7 +109,14 @@ class ImplementPHP
         $container  = self::$container;
 
         $path       = str_replace(["/Execute/Implements"], [""], __DIR__);
-        exec($path."/dockers/php/{$version}/run.sh {$version} {$port} {$container}", $output);
+
+        $remount = "";
+
+        if(isset(self::$remount)) {
+            $remount = self::$remount;
+        }
+
+        exec($path."/dockers/php/{$version}/run.sh {$version} {$port} {$container} {$remount}", $output);
         print_r($output);
     }
 }

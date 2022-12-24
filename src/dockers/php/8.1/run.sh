@@ -8,6 +8,7 @@ fi
 version=$1
 port=$2
 container=$3
+remount=$4
 root_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
 
 docker build \
@@ -22,4 +23,5 @@ docker run \
             --name ${container} \
             -v "$(pwd):/var/www/" \
             -p "${port}:80" \
+            ${remount}
             ${container}

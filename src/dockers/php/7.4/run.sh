@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $# -lt 1 ]; then
+   echo "Faltou utilizar pelo menos um argumento!"
+   exit 1
+fi
+
 version=$1
 port=$2
 container=$3
