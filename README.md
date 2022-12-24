@@ -19,5 +19,5 @@ source ~/.bashrc
 
 #### Para Rodar um container com PHP/Apache:
 ```
-scoob --php --version={version} --port={exporse port} --container={contaner name}
+scoob --php --version {version} --port {exporse port} --container {contaner name}
 ```

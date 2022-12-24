@@ -34,7 +34,7 @@ class ImplementPHP
     private static function version($arg)
     {
         $path = str_replace(["/Execute/Implements"], [""], __DIR__);
-        $versionValue = str_replace(["--version="], [""], $arg);
+        $versionValue = str_replace(["--version "], [""], $arg);
         if(!file_exists($path."/dockers/php/{$versionValue}/run.sh")) {
             $setColors = new SetColors();
             StringError::getError(
@@ -48,7 +48,7 @@ class ImplementPHP
 
     private static function port($arg)
     {
-        $portValue = str_replace(["--port="], [""], $arg);
+        $portValue = str_replace(["--port "], [""], $arg);
         if(!is_numeric($portValue)) {
             $setColors = new SetColors();
             StringError::getError(
@@ -62,7 +62,7 @@ class ImplementPHP
 
     private static function container($arg)
     {
-        $containerValue = str_replace(["--container="], [""], $arg);
+        $containerValue = str_replace(["--container "], [""], $arg);
         exec("docker ps --filter 'name={$containerValue}'", $output);
         if(count($output) > 1) {
             $message = "";
