@@ -28,17 +28,17 @@ else
   chmod 777 ${dir}
 fi
 
-docker build \
-            -t ${container} \
-            --build-arg PHP_VERSION=${version} \
-            --build-arg EXPOSE_PORT=${port} \
-            --build-arg SCOOB_DIR=${scoob_dir} \
-            --build-arg ROOT_DIR=${root_dir} \
-            -f "${scoob_dir}/Dockerfile" .
-
-docker run \
-            -d \
-            --name ${container} \
-            -v "$(pwd):/var/www/" \
-            -p "${port}:80" \
-            ${container}
+#docker build \
+#            -t ${container} \
+#            --build-arg PHP_VERSION=${version} \
+#            --build-arg EXPOSE_PORT=${port} \
+#            --build-arg SCOOB_DIR=${scoob_dir} \
+#            --build-arg ROOT_DIR=${root_dir} \
+#            -f "${scoob_dir}/Dockerfile" .
+#
+#docker run \
+#            -d \
+#            --name ${container} \
+#            -v "$(pwd):/var/www/" \
+#            -p "${port}:80" \
+#            ${container}
