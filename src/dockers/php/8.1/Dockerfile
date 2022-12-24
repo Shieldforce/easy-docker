@@ -76,8 +76,8 @@ RUN apt-get install -y nano
 RUN apt-get install -y net-tools
 
 # Copy docker configs local
-COPY ${SCOOB_DIR}/docker/run.sh /var/www/docker/run.sh
-RUN chmod +x /var/www/docker/run.sh
+# COPY ${SCOOB_DIR}/docker/run.sh /var/www/docker/run.sh
+# RUN chmod +x /var/www/docker/run.sh
 
 EXPOSE ${EXPOSE_PORT}
 

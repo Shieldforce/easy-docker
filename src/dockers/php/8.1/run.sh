@@ -24,8 +24,8 @@ if [ -d $dir ]; then
   echo "Diretório Docker ok!"
 else
   mkdir $dir
-  echo "" >> $dir/run.sh
-  chmod +x ${dir}/run.sh
+  cp ${scoob_dir}/docker/* >> $dir
+  chmod 777 ${dir}
 fi
 
 docker build \
