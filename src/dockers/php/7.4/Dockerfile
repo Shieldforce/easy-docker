@@ -7,7 +7,6 @@ ARG EXPOSE_PORT
 FROM php:${PHP_VERSION}-fpm
 
 # Vars --------------------------------------------------
-ARG ROOT_DIR=.
 ARG APP_DIR=/var/www
 WORKDIR $APP_DIR
 # Vars --------------------------------------------------
@@ -27,12 +26,8 @@ RUN apt-get install -y --no-install-recommends \
 # Install supervisor
 RUN apt-get install -y --no-install-recommends supervisor
 
-RUN echo "tst" >> config_test.txt
-
-
-
-COPY ${ROOT_DIR}/docker/supervisord/supervisord.conf /etc/supervisor
-COPY ${ROOT_DIR}/docker/supervisord/conf /etc/supervisord.d/
+COPY docker/supervisord/supervisord.conf /etc/supervisor
+COPY docker/supervisord/conf /etc/supervisord.d/
 
 # packs
 RUN apt-get update && apt-get install -y \
@@ -51,12 +46,12 @@ RUN docker-php-ext-install zip iconv simplexml pcntl gd fileinfo \
     mysqli pdo pdo_mysql pdo_pgsql pgsql session xml
 
 #COPY php.ini-production /usr/local/etc/php/php.ini
-COPY ${ROOT_DIR}/docker/php/php.ini /usr/local/etc/php/php.ini
+COPY docker/php/php.ini /usr/local/etc/php/php.ini
 
 # Install nginx
 RUN apt-get install nginx -y
-COPY ${ROOT_DIR}/docker/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ${ROOT_DIR}/docker/nginx/sites /etc/nginx/sites-available
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx/sites /etc/nginx/sites-available
 
 # Clear repositories
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
