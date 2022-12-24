@@ -10,7 +10,7 @@ port=$2
 container=$3
 remount=$4
 scoob_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
-root_dir=""
+root_dir="/"
 
 if [ $remount == "--build" ]; then
    docker stop ${container}
