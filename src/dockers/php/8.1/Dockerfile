@@ -79,9 +79,9 @@ RUN apt-get install -y net-tools
 COPY ${SCOOB_DIR}/docker/run.sh ${ROOT_DIR}docker/run.sh
 RUN chmod +x ${ROOT_DIR}docker/run.sh
 
-ENTRYPOINT ${ROOT_DIR}docker/run.sh
-
 EXPOSE ${EXPOSE_PORT}
+
+ENTRYPOINT ${ROOT_DIR}docker/run.sh
 
 # finish dockerfile
 ADD ${SCOOB_DIR}/docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
