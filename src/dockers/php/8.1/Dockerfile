@@ -81,7 +81,7 @@ RUN apt-get install -y net-tools
 
 EXPOSE ${EXPOSE_PORT}
 
-ENTRYPOINT ["/var/www/docker_scoob/run.sh'"]
+ENTRYPOINT ["/var/www/docker_scoob/run.sh"]
 
 # finish dockerfile
 ADD ${SCOOB_DIR}/docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
