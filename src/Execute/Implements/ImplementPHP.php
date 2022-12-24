@@ -18,14 +18,14 @@ class ImplementPHP
                 continue;
             }
             $argMethod = false;
-            if(preg_match("/--(.*?)$/", $arg, $matches)) {
+            if(preg_match("/--(.*?)=/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
                 if (method_exists(new ImplementPHP(), $argMethod)) {
                     self::$argMethod($arg);
                     $argsMount[] = $arg;
                 }
             }
-            if(!$argMethod) StringError::getErrorArg($arg);
+            if(!$argMethod) StringError::getErrorArg($argMethod);
         }
 
         if(count($argsMount) > 0) self::dockerRun();
@@ -34,7 +34,7 @@ class ImplementPHP
     private static function version($arg)
     {
         $path = str_replace(["/Execute/Implements"], [""], __DIR__);
-        $versionValue = str_replace(["--version "], [""], $arg);
+        $versionValue = str_replace(["--version="], [""], $arg);
         if(!file_exists($path."/dockers/php/{$versionValue}/run.sh")) {
             $setColors = new SetColors();
             StringError::getError(
@@ -48,7 +48,7 @@ class ImplementPHP
 
     private static function port($arg)
     {
-        $portValue = str_replace(["--port "], [""], $arg);
+        $portValue = str_replace(["--port="], [""], $arg);
         if(!is_numeric($portValue)) {
             $setColors = new SetColors();
             StringError::getError(
@@ -62,14 +62,14 @@ class ImplementPHP
 
     private static function container($arg)
     {
-        $containerValue = str_replace(["--container "], [""], $arg);
+        $containerValue = str_replace(["--container="], [""], $arg);
         exec("docker ps --filter 'name={$containerValue}'", $output);
         if(count($output) > 1) {
             $message = "";
             foreach ($output as $cont) {
                 $message .= $cont."\n";
             }
-            $remount = "Se deseja recriar o container passe a flag --remount=yes";
+            $remount = "Se deseja remontar o container passe a flag --remount";
             StringError::getError(
                 "Existem containers com nome parecido : {$containerValue}! \n" .$message. "\n". $remount
             );
