@@ -7,6 +7,7 @@ namespace App\Execute;
 use App\Colors\SetColors;
 use App\Execute\Errors\StringError;
 use App\Execute\Implements\ImplementPHP;
+use App\Execute\Implements\LaravelPHP;
 
 class ExecuteArgs
 {
@@ -81,9 +82,10 @@ class ExecuteArgs
     private static function descriptions($method) : string
     {
         $return =  [
-            "help" => "Este argumento fornece uma lista de ajuda para o usuário!",
-            "php"  => "Este comando sobe um container com o PHP mais a --version= informada, 
+            "help"     => "Este argumento fornece uma lista de ajuda para o usuário!",
+            "php"      => "Este comando sobe um container com o PHP mais a --version= informada, 
             se não passar versão, será considerado a última!",
+            "laravel"  => "Este comando sobe um container com todos os recursos para rodar o laravel!",
         ];
         return $return[$method] ?? "";
     }
@@ -91,5 +93,10 @@ class ExecuteArgs
     private static function php($arg, $argv)
     {
         ImplementPHP::run($argv);
+    }
+
+    private static function laravel($arg, $argv)
+    {
+        LaravelPHP::run($argv);
     }
 }

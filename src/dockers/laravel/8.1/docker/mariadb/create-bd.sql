@@ -1,0 +1,1 @@
+CREATE DATABASE be_migrations_backend;
