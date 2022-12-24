@@ -30,7 +30,9 @@ for ARG in $*; do
             docker rm ${container} --force
             docker image rm ${container} --force
             ;;
-      *) ;;
+      *) echo "Opção inválida!"
+         #exit 1
+         ;;
    esac
 
 done
