@@ -31,17 +31,17 @@ else
     mkdir docker_scoob
   fi
 
-  if [ -d docker_scoob/php ]; then
+  if [ -d docker_scoob/laravel ]; then
     echo "Diretório php ok!"
   else
     cd docker_scoob && mkdir php
     cd ..
   fi
 
-  if [ -d docker_scoob/php/$version ]; then
+  if [ -d docker_scoob/laravel/$version ]; then
     echo "Diretório $version ok!"
   else
-    cd docker_scoob/php && mkdir $version
+    cd docker_scoob/laravel && mkdir $version
     cd ..
     cd ..
   fi
