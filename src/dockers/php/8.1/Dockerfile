@@ -30,8 +30,8 @@ RUN apt-get install -y --no-install-recommends \
 # Install supervisor
 RUN apt-get install -y --no-install-recommends supervisor
 
-COPY ${ROOT_DIR}docker/supervisord/supervisord.conf /etc/supervisor
-COPY ${ROOT_DIR}docker/supervisord/conf /etc/supervisord.d/
+COPY ${ROOT_DIR}docker_scoob/php/8.1/supervisord/supervisord.conf /etc/supervisor
+COPY ${ROOT_DIR}docker_scoob/php/8.1/supervisord/conf /etc/supervisord.d/
 
 # packs
 RUN apt-get update && apt-get install -y \
@@ -50,12 +50,12 @@ RUN docker-php-ext-install zip iconv simplexml pcntl gd fileinfo \
     mysqli pdo pdo_mysql pdo_pgsql pgsql session xml
 
 #COPY php.ini-production /usr/local/etc/php/php.ini
-COPY ${ROOT_DIR}docker/php/php.ini /usr/local/etc/php/php.ini
+COPY ${ROOT_DIR}docker_scoob/php/8.1/php/php.ini /usr/local/etc/php/php.ini
 
 # Install nginx
 RUN apt-get install nginx -y
-COPY ${ROOT_DIR}docker/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ${ROOT_DIR}docker/nginx/sites /etc/nginx/sites-available
+COPY ${ROOT_DIR}docker_scoob/php/8.1/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ${ROOT_DIR}docker_scoob/php/8.1/nginx/sites /etc/nginx/sites-available
 
 # Clear repositories
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -80,6 +80,6 @@ EXPOSE ${EXPOSE_PORT}
 ENTRYPOINT ["/var/www/docker_scoob/php/8.1/run.sh"]
 
 # finish dockerfile
-ADD ${ROOT_DIR}docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
-ADD ${ROOT_DIR}docker/supervisord/conf /etc/supervisord.d/
+ADD ${ROOT_DIR}docker_scoob/php/8.1/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
+ADD ${ROOT_DIR}docker_scoob/php/8.1/supervisord/conf /etc/supervisord.d/
 CMD /usr/bin/supervisord -n
