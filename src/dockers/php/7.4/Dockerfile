@@ -11,7 +11,6 @@ ARG ROOT_DIR
 ARG APP_DIR=/var/www
 ### Args ------------------------
 
-
 # Workdir --------------------------------------------------
 WORKDIR $APP_DIR
 
@@ -78,6 +77,6 @@ RUN apt-get install -y net-tools
 EXPOSE ${EXPOSE_PORT}
 
 # finish dockerfile
-ADD ./docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
-ADD ./docker/supervisord/conf /etc/supervisord.d/
+ADD ${ROOT_DIR}/docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
+ADD ${ROOT_DIR}/docker/supervisord/conf /etc/supervisord.d/
 CMD /usr/bin/supervisord -n
