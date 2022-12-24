@@ -81,8 +81,11 @@ RUN apt-get install -y net-tools
 
 EXPOSE ${EXPOSE_PORT}
 
-ARG RUNSH=["/var/www/docker_scoob/php/${PHP_VERSION}/run.sh"]
-ENTRYPOINT ${RUNSH}
+RUN if [[ $PHP_VERSION == "7.3" ]] ; then ENTRYPOINT ["/var/www/docker_scoob/php/7.3/run.sh"]; else fi
+RUN if [[ $PHP_VERSION == "7.4" ]] ; then ENTRYPOINT ["/var/www/docker_scoob/php/7.4/run.sh"]; else fi
+RUN if [[ $PHP_VERSION == "8.0" ]] ; then ENTRYPOINT ["/var/www/docker_scoob/php/8.0/run.sh"]; else fi
+RUN if [[ $PHP_VERSION == "8.1" ]] ; then ENTRYPOINT ["/var/www/docker_scoob/php/8.1/run.sh"]; else fi
+RUN if [[ $PHP_VERSION == "8.2" ]] ; then ENTRYPOINT ["/var/www/docker_scoob/php/8.2/run.sh"]; else fi
 
 # finish dockerfile
 ADD ${SCOOB_DIR}/docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
