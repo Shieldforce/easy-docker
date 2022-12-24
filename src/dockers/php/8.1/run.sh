@@ -17,11 +17,11 @@ if [ $remount == "--build" ]; then
    docker image rm ${container}
 fi
 
+clear
 echo "@>>>>>> Instalação do container de PHP em andamento.....";
 echo "";
 echo "";
 echo "";
-clear
 
 docker build \
             -t ${container} \
