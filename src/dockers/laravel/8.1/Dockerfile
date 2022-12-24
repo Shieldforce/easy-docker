@@ -7,8 +7,6 @@ FROM php:${PHP_VERSION}-fpm
 
 ### Args ------------------------
 ARG EXPOSE_PORT
-ARG REDIS_PORT
-ARG MYSQL_PORT
 ARG SCOOB_DIR
 ARG ROOT_DIR
 ARG APP_DIR=/var/www
@@ -97,7 +95,7 @@ RUN apt-get install -y nano
 # Net
 RUN apt-get install -y net-tools
 
-EXPOSE ${EXPOSE_PORT} ${MYSQL_PORT} ${REDIS_PORT} 9000
+EXPOSE ${EXPOSE_PORT} 33681 63781 9000
 
 ENTRYPOINT ["/var/www/docker_scoob/laravel/8.1/run.sh"]
 

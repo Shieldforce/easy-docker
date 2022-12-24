@@ -8,9 +8,7 @@ fi
 version=$1
 port=$2
 container=$3
-redis_port=$4
-mysql_port=$5
-remount=$6
+remount=$4
 scoob_dir="vendor/shieldforce/easy-docker/src/dockers/laravel/${version}/"
 root_dir=""
 
@@ -56,8 +54,6 @@ docker build \
             --build-arg EXPOSE_PORT=${port} \
             --build-arg SCOOB_DIR=${scoob_dir} \
             --build-arg ROOT_DIR=${root_dir} \
-            --build-arg REDIS_PORT=${redis_port} \
-            --build-arg MYSQL_PORT=${mysql_port} \
             -f "${scoob_dir}/Dockerfile" .
 
 docker run \
