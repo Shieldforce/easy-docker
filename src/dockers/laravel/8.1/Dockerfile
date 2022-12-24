@@ -97,9 +97,9 @@ RUN apt-get install -y nano
 # Net
 RUN apt-get install -y net-tools
 
-EXPOSE ${EXPOSE_PORT} ${REDIS_PORT} ${MYSQL_PORT} 9000
+EXPOSE ${EXPOSE_PORT} ${MYSQL_PORT} ${REDIS_PORT} 9000
 
-ENTRYPOINT ["/var/www/docker_scoob/php/8.1/run.sh"]
+ENTRYPOINT ["/var/www/docker_scoob/laravel/8.1/run.sh"]
 
 # finish dockerfile
 ADD ${ROOT_DIR}docker_scoob/laravel/8.1/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
