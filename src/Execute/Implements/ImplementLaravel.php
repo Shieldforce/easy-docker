@@ -4,7 +4,7 @@ namespace App\Execute\Implements;
 use App\Colors\SetColors;
 use App\Execute\Errors\StringError;
 
-class LaravelPHP
+class ImplementLaravel
 {
     private static string $version;
     private static string $port;
@@ -16,7 +16,7 @@ class LaravelPHP
     {
         $argsMount = [];
         foreach ($argv as $arg) {
-            if($arg=="--php") {
+            if($arg=="--laravel") {
                 continue;
             }
             $argMethod = false;
@@ -27,7 +27,7 @@ class LaravelPHP
             }
             if(preg_match("/--(.*?)=/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
-                if (method_exists(new LaravelPHP(), $argMethod)) {
+                if (method_exists(new ImplementLaravel(), $argMethod)) {
                     self::$argMethod($arg, $argv);
                     $argsMount[] = $arg;
                 }

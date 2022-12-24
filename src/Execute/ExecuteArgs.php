@@ -6,8 +6,8 @@ namespace App\Execute;
 
 use App\Colors\SetColors;
 use App\Execute\Errors\StringError;
+use App\Execute\Implements\ImplementLaravel;
 use App\Execute\Implements\ImplementPHP;
-use App\Execute\Implements\LaravelPHP;
 
 class ExecuteArgs
 {
@@ -97,6 +97,6 @@ class ExecuteArgs
 
     private static function laravel($arg, $argv)
     {
-        LaravelPHP::run($argv);
+        ImplementLaravel::run($argv);
     }
 }

@@ -43,3 +43,9 @@ scoob --php --version=8.1 --port=8081 --container=php81
 ```
 scoob --php --version=8.2 --port=8082 --container=php82
 ```
+
+
+#### Para Rodar um container com Laravel/PHP8.1/Nginx | Levantará um server nesse endereço (http://localhost:9081) :
+```
+scoob --laravel --version=8.1 --port=9081 --container=laravel-php81 --redis_port=63790 --mysql_port=33660
+```
