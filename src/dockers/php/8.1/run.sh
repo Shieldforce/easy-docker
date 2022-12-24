@@ -23,14 +23,14 @@ echo "";
 echo "";
 echo "";
 
-dir=/docker/
+dir=docker
 
 if [ -d $dir ]; then
   echo "Diretório Docker ok!"
 else
   mkdir $dir
-  echo "" >> "$dir/run.sh"
-  chmod +x ${dir}run.sh
+  echo "" >> $dir/run.sh
+  chmod +x ${dir}/run.sh
 fi
 
 docker build \
