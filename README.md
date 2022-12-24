@@ -21,3 +21,8 @@ source ~/.bashrc
 ```
 scoob --php --version={version} --port={exporse port} --container={contaner name}
 ```
+
+#### Para Remontar um container utilize a flag --remount:
+```
+scoob --php --version={version} --port={exporse port} --container={contaner name} --remount
+```
