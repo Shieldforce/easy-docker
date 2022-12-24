@@ -17,7 +17,7 @@ class ImplementPHP
             if($arg=="--php") {
                 continue;
             }
-            $argMethod = false;
+            $argMethod = $arg;
             if(preg_match("/--(.*?)=/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
                 if (method_exists(new ImplementPHP(), $argMethod)) {
