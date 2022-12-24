@@ -69,8 +69,9 @@ class ImplementPHP
             foreach ($output as $cont) {
                 $message .= $cont."\n";
             }
+            $remount = "Se deseja recriar o container passe a flag --remount=yes";
             StringError::getError(
-                "Existem containers com nome parecido : {$containerValue}! \n" .$message
+                "Existem containers com nome parecido : {$containerValue}! \n" .$message. "\n". $remount
             );
         }
         self::$container = $containerValue;
