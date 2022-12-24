@@ -20,6 +20,9 @@ class ImplementPHP
                 continue;
             }
             $argMethod = false;
+            if($arg=="--remount") {
+                $argMethod = true;
+            }
             if(preg_match("/--(.*?)=/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
                 if (method_exists(new ImplementPHP(), $argMethod)) {
