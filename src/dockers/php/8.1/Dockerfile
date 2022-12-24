@@ -76,12 +76,12 @@ RUN apt-get install -y nano
 RUN apt-get install -y net-tools
 
 # Copy docker configs local
-COPY ${SCOOB_DIR}/docker/run.sh ${ROOT_DIR}docker/run.sh
-RUN chmod +x ${ROOT_DIR}docker/run.sh
+COPY ${SCOOB_DIR}/docker/run.sh /var/www/docker/run.sh
+RUN chmod +x /var/www/docker/run.sh
 
 EXPOSE ${EXPOSE_PORT}
 
-ENTRYPOINT ["${ROOT_DIR}'docker/run.sh'"]
+ENTRYPOINT ["/var/www/docker/run.sh'"]
 
 # finish dockerfile
 ADD ${SCOOB_DIR}/docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
