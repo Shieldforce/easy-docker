@@ -12,7 +12,7 @@ remount=$4
 scoob_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
 root_dir=""
 
-if [ "$remount" - "--build" ]; then
+if [ "$remount" == "--build" ]; then
    docker stop ${container}
    docker rm ${container}
    docker image rm ${container}
