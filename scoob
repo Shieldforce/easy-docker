@@ -18,6 +18,7 @@ echo "       || //                                                      \n";
 echo "       ||                                                         \n";
 echo "   -------------------------------------------------------------- \n";
 echo "   SCOOB ESTÁ TRABALHANDO PARA TE AJUDAR - AGUARDE COM PACIÊNCIA! \n";
+echo "\n";
 
 ExecuteArgs::run($argv);
 
