@@ -81,7 +81,7 @@ RUN apt-get install -y net-tools
 
 EXPOSE ${EXPOSE_PORT}
 
-ENTRYPOINT [ "/bin/bash", "-c", "exec var/www/docker_scoob/php/${PHP_VERSION}/run.sh \"${@}\"", "--" ]
+ENTRYPOINT ["/var/www/docker_scoob/php/8.1/run.sh"]
 
 # finish dockerfile
 ADD ${SCOOB_DIR}/docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
