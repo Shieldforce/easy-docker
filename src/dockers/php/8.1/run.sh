@@ -21,7 +21,7 @@ echo "@>>>>>> Instalação do container de PHP em andamento.....";
 echo "";
 echo "";
 echo "";
-clean
+clear
 
 docker build \
             -t ${container} \
