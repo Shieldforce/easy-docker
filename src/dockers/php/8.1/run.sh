@@ -23,7 +23,9 @@ dir=docker_scoob/php/$version
 if [ -d $dir ]; then
   echo "Diretório Docker ok!"
 else
-  mkdir $dir
+  mkdir docker_scoob
+  cd docker_scoob || mkdir php
+  cd docker_scoob/php || mkdir $version
 fi
 
 cp -R ${scoob_dir}docker/* $dir
