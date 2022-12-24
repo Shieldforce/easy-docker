@@ -23,9 +23,16 @@ echo "";
 echo "";
 echo "";
 
+dir=docker
+
+if [ -d $dir ];
+then
 mkdir docker
 echo "" >> "docker/run.sh"
-chmod 644 docker/run.sh
+chmod +x docker/run.sh
+else
+echo "Diretório docker não existe!"
+fi
 
 docker build \
             -t ${container} \
