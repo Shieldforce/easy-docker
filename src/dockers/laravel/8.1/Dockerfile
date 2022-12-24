@@ -86,7 +86,7 @@ RUN apt-get install --no-install-recommends -y mariadb-client
 RUN apt-get update
 COPY ${ROOT_DIR}docker_scoob/laravel/8.1/mariadb/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN chmod 0644 /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ${ROOT_DIR}docker_scoob/laravel/8.1/mariadb/create-bd.sql /docker-entrypoint-initdb.d/
+COPY ${ROOT_DIR}docker_scoob/laravel/8.1/mariadb/execute-sql.sql /docker-entrypoint-initdb.d/
 
 #Install systemd
 RUN apt-get install -y systemd
