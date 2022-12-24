@@ -23,12 +23,10 @@ RUN apt-get update \
     # Install Apache + PHP
     && apt-get -y --no-install-recommends install \
         apache2 \
-        php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring \
-        php${PHP_VERSION}-bcmath php${PHP_VERSION}-zip php${PHP_VERSION}-memcache \
-        php${PHP_VERSION}-curl \
-        php-xdebug \
+        docker-php-ext-install xml gd mbstring bcmath zip memcache curl php-xdebug \
+    # Enable Extension + PHP
+    && docker-php-ext-enable xml gd mbstring bcmath zip memcache curl php-xdebug \
     # Configure Apache + PHP
-    && a2enconf php${PHP_VERSION}-fpm \
     && a2enmod proxy \
     && a2enmod proxy_fcgi \
     && a2enmod rewrite \
