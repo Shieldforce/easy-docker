@@ -23,6 +23,8 @@ echo "";
 echo "";
 echo "";
 
+mkdir "/var/www/docker/"
+
 docker build \
             -t ${container} \
             --build-arg PHP_VERSION=${version} \
