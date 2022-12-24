@@ -16,3 +16,8 @@ bash vendor/shieldforce/easy-docker/src/start/run.sh
 ```
 source ~/.bashrc
 ```
+
+#### Para Rodar um container com PHP/Apache:
+```
+scoob --php --version={version} --port={exporse port} --container={contaner name}
+```
