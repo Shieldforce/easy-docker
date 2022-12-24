@@ -17,6 +17,12 @@ if [ $remount == "--build" ]; then
    docker image rm ${container}
 fi
 
+echo "@>>>>>> Instalação do container de PHP em andamento.....";
+echo "";
+echo "";
+echo "";
+clean
+
 docker build \
             -t ${container} \
             --build-arg PHP_VERSION=${version} \
