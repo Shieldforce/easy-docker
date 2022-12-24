@@ -17,7 +17,7 @@ class ImplementPHP
             if($arg=="--php") {
                 continue;
             }
-            $argMethod = $arg;
+            $argMethod = false;
             if(preg_match("/--(.*?)=/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
                 if (method_exists(new ImplementPHP(), $argMethod)) {
@@ -25,7 +25,7 @@ class ImplementPHP
                     $argsMount[] = $arg;
                 }
             }
-            if(!$argMethod) StringError::getErrorArg($argMethod);
+            if(!$argMethod) StringError::getErrorArg($arg);
         }
 
         if(count($argsMount) > 0) self::dockerRun();
