@@ -26,6 +26,7 @@ else
   mkdir docker_scoob
   cd docker_scoob || mkdir php
   cd docker_scoob/php || mkdir $version
+  cd ..
 fi
 
 cp -R ${scoob_dir}docker/* $dir
