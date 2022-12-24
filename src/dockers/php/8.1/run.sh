@@ -16,16 +16,16 @@ for ARG in $*; do
       "--php")
             echo "Você escolheu implementar PHP"
             ;;
-      "--version")
+      "-version")
             version=$(($COUNT+1))
             ;;
-      "--port")
+      "-port")
             port=$(($COUNT+1))
             ;;
-      "--container")
+      "-container")
             container=$(($COUNT+1))
             ;;
-      "--remount")
+      "-remount")
             docker stop ${container} --force
             docker rm ${container} --force
             docker image rm ${container} --force
