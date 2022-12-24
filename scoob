@@ -9,15 +9,15 @@ define('SCOOB_START', microtime(true));
 
 require './vendor/autoload.php';
 
-echo "      ----                   ------   ------   -----   -----  |------  \n";
-echo "    --------                |        |        |     | |     | |      | \n";
-echo "   |  -  -  |                ------  |        |     | |     | |------  \n";
-echo "       --   (^^^= - - -            | |        |     | |     | |      | \n";
-echo "       ||  //                ------   ------   -----   -----  |------  \n";
-echo "       || //                                                           \n";
-echo "       ||                                                              \n";
-echo "   --------------------------------------------------------------      \n";
-echo "   SCOOB ESTÁ TRABALHANDO PARA TE AJUDAR - AGUARDE COM PACIÊNCIA!      \n";
+echo "      ----              ------   ------   -----   -----  |------  \n";
+echo "    --------           |        |        |     | |     | |      | \n";
+echo "   |  -  -  |           ------  |        |     | |     | |------  \n";
+echo "       --   (^^^= - - -       | |        |     | |     | |      | \n";
+echo "       ||  //           ------   ------   -----   -----  |------  \n";
+echo "       || //                                                      \n";
+echo "       ||                                                         \n";
+echo "   -------------------------------------------------------------- \n";
+echo "   SCOOB ESTÁ TRABALHANDO PARA TE AJUDAR - AGUARDE COM PACIÊNCIA! \n";
 
 ExecuteArgs::run($argv);
 
