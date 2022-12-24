@@ -10,27 +10,25 @@ fi
 COUNT=0
 for ARG in $*; do
    COUNT=`expr $COUNT + 1`
-   echo "Argumento $COUNT: $ARG"
-
    case $ARG in
       "--php")
             echo "Você escolheu implementar PHP"
             ;;
-      "-version")
+      "--version")
             version=$(($COUNT+1))
             ;;
-      "-port")
+      "--port")
             port=$(($COUNT+1))
             ;;
-      "-container")
+      "--container")
             container=$(($COUNT+1))
             ;;
-      "-remount")
+      "--remount")
             docker stop ${container} --force
             docker rm ${container} --force
             docker image rm ${container} --force
             ;;
-      *) echo "Opção inválida!"
+      *) #echo "Opção inválida!"
          #exit 1
          ;;
    esac
