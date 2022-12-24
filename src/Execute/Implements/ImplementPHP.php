@@ -35,6 +35,10 @@ class ImplementPHP
     {
         $path = str_replace(["/Execute/Implements"], [""], __DIR__);
         $versionValue = str_replace(["--version="], [""], $arg);
+
+        $root_dir="vendor/shieldforce/easy-docker/src/dockers/php/${$versionValue}/";
+        exec("${root_dir}loading.sh");
+
         if(!file_exists($path."/dockers/php/{$versionValue}/run.sh")) {
             $setColors = new SetColors();
             StringError::getError(

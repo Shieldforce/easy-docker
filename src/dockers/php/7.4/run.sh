@@ -5,10 +5,6 @@ port=$2
 container=$3
 root_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
 
-#!/bin/bash
-
-bash "${root_dir}loading.sh"
-
 docker build \
             -t ${container} \
             --build-arg PHP_VERSION=${version} \
