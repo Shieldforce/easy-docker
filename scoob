@@ -9,10 +9,13 @@ define('SCOOB_START', microtime(true));
 
 require './vendor/autoload.php';
 
-echo "      ---       \n";
-echo "    -------     \n";
-echo "   | -- -- |    \n";
-echo "      ---       \n";
+echo "      ----             \n";
+echo "    --------           \n";
+echo "   |  -  -  |          \n";
+echo "       --   (^^^= - - -\n";
+echo "       ||  //          \n";
+echo "       || //           \n";
+echo "       ||              \n";
 
 ExecuteArgs::run($argv);
 
