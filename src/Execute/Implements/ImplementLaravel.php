@@ -158,10 +158,8 @@ class ImplementLaravel
         $redis_port       = self::$redis_port;
         $mysql_port       = self::$mysql_port;
         $container        = self::$container;
-
-        $path       = str_replace(["/Execute/Implements"], [""], __DIR__);
-
-        $remount = "";
+        $path             = str_replace(["/Execute/Implements"], [""], __DIR__);
+        $remount          = "";
 
         if(isset(self::$remount)) {
             $remount = self::$remount;
