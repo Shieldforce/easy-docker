@@ -10,6 +10,8 @@ ARG EXPOSE_PORT
 ARG SCOOB_DIR
 ARG ROOT_DIR
 ARG APP_DIR=/var/www
+ARG REDIS_LIB_VERSION=5.3.7
+ENV MARIADB_MYSQL_SOCKET_DIRECTORY='/var/run/mysqld'
 ### Args ------------------------
 
 # Workdir --------------------------------------------------
