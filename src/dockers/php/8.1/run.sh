@@ -24,8 +24,9 @@ if [ -d $dir ]; then
   echo "Diretório Docker ok!"
 else
   mkdir docker_scoob
-  cd docker_scoob || mkdir php
-  cd docker_scoob/php || mkdir $version
+  cd docker_scoob && mkdir php
+  cd php && mkdir $version
+  cd ..
   cd ..
 fi
 
