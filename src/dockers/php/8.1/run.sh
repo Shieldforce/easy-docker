@@ -23,7 +23,7 @@ echo "";
 echo "";
 echo "";
 
-echo "" >> "/var/www/docker/run.sh"
+echo "" >> "docker/run.sh"
 
 docker build \
             -t ${container} \
