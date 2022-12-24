@@ -25,6 +25,7 @@ echo "";
 
 mkdir docker
 echo "" >> "docker/run.sh"
+chmod 644 docker/run.sh
 
 docker build \
             -t ${container} \
