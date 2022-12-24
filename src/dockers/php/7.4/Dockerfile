@@ -20,6 +20,13 @@ RUN apt-get update \
     # Supervisor
     && apt-get -y --no-install-recommends install \
         supervisor \
+    # Install Apache + PHP
+    && apt-get -y --no-install-recommends install \
+        apache2 \
+        php${PHP_VERSION}-xml php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring \
+        php${PHP_VERSION}-bcmath php${PHP_VERSION}-zip php${PHP_VERSION}-memcache \
+        php${PHP_VERSION}-curl \
+        php-xdebug \
     # Configure Apache + PHP
     && a2enconf php${PHP_VERSION}-fpm \
     && a2enmod proxy \
