@@ -8,6 +8,10 @@ class ImplementLaravel
 {
     private static string $version;
     private static string $port;
+
+    private static string $redis_port;
+
+    private static string $mysql_port;
     private static string $container;
 
     private static string $remount;
@@ -67,6 +71,34 @@ class ImplementLaravel
         self::$port = $portValue;
     }
 
+    private static function redis_port($arg, $argv=null)
+    {
+        $portValue = str_replace(["--redis_port="], [""], $arg);
+        if(!is_numeric($portValue)) {
+            $setColors = new SetColors();
+            StringError::getError(
+                $setColors->setEffect("red").
+                "Porta {$portValue}, precisa ser um valor inteiro!".
+                $setColors->setEffect("end")
+            );
+        }
+        self::$redis_port = $portValue;
+    }
+
+    private static function mysql_port($arg, $argv=null)
+    {
+        $portValue = str_replace(["--mysql_port="], [""], $arg);
+        if(!is_numeric($portValue)) {
+            $setColors = new SetColors();
+            StringError::getError(
+                $setColors->setEffect("red").
+                "Porta {$portValue}, precisa ser um valor inteiro!".
+                $setColors->setEffect("end")
+            );
+        }
+        self::$mysql_port = $portValue;
+    }
+
     private static function container($arg, $argv=null)
     {
         $containerValue = str_replace(["--container="], [""], $arg);
@@ -111,6 +143,16 @@ class ImplementLaravel
             return;
         }
 
+        if(!isset(self::$redis_port)) {
+            StringError::getErrorArg("--redis_port");
+            return;
+        }
+
+        if(!isset(self::$mysql_port)) {
+            StringError::getErrorArg("--mysql_port");
+            return;
+        }
+
         $version    = self::$version;
         $port       = self::$port;
         $container  = self::$container;
@@ -123,7 +165,7 @@ class ImplementLaravel
             $remount = self::$remount;
         }
 
-        exec($path."/dockers/laravel/{$version}/run.sh {$version} {$port} {$container} {$remount}", $output);
+        exec($path."/dockers/laravel/{$version}/run.sh {$version} {$port} {$container} {$redis_port} {$mysql_port} {$remount}", $output);
         print_r($output);
     }
 }
