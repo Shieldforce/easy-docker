@@ -9,7 +9,8 @@ version=$1
 port=$2
 container=$3
 remount=$4
-root_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
+scoob_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
+root_dir=""
 
 if [ $remount == "--build" ]; then
    docker stop ${container}
@@ -37,8 +38,9 @@ docker build \
             -t ${container} \
             --build-arg PHP_VERSION=${version} \
             --build-arg EXPOSE_PORT=${port} \
+            --build-arg SCOOB_DIR=${scoob_dir} \
             --build-arg ROOT_DIR=${root_dir} \
-            -f "${root_dir}/Dockerfile" .
+            -f "${scoob_dir}/Dockerfile" .
 
 docker run \
             -d \
