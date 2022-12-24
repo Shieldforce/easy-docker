@@ -18,7 +18,7 @@ if [ $remount == "--build" ]; then
    docker image rm ${container}
 fi
 
-dir=docker
+dir=docker_scoob
 
 if [ -d $dir ]; then
   echo "Diretório Docker ok!"
