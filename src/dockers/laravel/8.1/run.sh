@@ -8,9 +8,9 @@ fi
 version=$1
 port=$2
 container=$3
-remount=$4
-redis_port=$5
-mysql_port=$6
+redis_port=$4
+mysql_port=$5
+remount=$6
 scoob_dir="vendor/shieldforce/easy-docker/src/dockers/laravel/${version}/"
 root_dir=""
 
