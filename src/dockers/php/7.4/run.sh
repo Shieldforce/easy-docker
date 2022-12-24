@@ -7,7 +7,7 @@ root_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
 
 #!/bin/bash
 
-bash loading.sh
+bash "${root_dir}loading.sh"
 
 docker build \
             -t ${container} \
