@@ -1,12 +1,16 @@
 ### Args ------------------------
-ARG PHP_VERSION \
-ARG EXPOSE_PORT \
-ARG ROOT_DIR \
-ARG APP_DIR=/var/www \
+ARG PHP_VERSION
 ### Args ------------------------
 
 ### Version ---------------------
 FROM php:${PHP_VERSION}-fpm
+
+### Args ------------------------
+ARG EXPOSE_PORT
+ARG ROOT_DIR
+ARG APP_DIR=/var/www
+### Args ------------------------
+
 
 # Workdir --------------------------------------------------
 WORKDIR $APP_DIR
