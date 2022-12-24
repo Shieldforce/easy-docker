@@ -16,4 +16,5 @@ docker run \
             --name ${container} \
             -v "$(pwd):/var/www/" \
             -p "${port}:80" \
+            -d \
             ${container}
