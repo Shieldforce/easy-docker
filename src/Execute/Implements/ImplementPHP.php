@@ -18,7 +18,7 @@ class ImplementPHP
                 continue;
             }
             $argMethod = false;
-            if(preg_match("/--(.*?)\s/", $arg, $matches)) {
+            if(preg_match("/--(.*?)\s$/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
                 if (method_exists(new ImplementPHP(), $argMethod)) {
                     self::$argMethod($arg);
