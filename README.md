@@ -17,7 +17,7 @@ bash vendor/shieldforce/easy-docker/src/start/run.sh
 source ~/.bashrc
 ```
 
-#### Para Rodar um container com PHP/Apache:
+#### Para Rodar um container com PHP/Nginx:
 ```
 scoob --php --version={version} --port={exporse port} --container={contaner name}
 ```
@@ -25,4 +25,21 @@ scoob --php --version={version} --port={exporse port} --container={contaner name
 #### Para Remontar um container utilize a flag --remount:
 ```
 scoob --php --version={version} --port={exporse port} --container={contaner name} --remount
+```
+
+# Exemplos:
+
+#### Para Rodar um container com PHP7.4/Nginx:
+```
+scoob --php --version=7.4 --port=8074 --container=php74
+```
+
+#### Para Rodar um container com PHP8.1/Nginx:
+```
+scoob --php --version=7.4 --port=8074 --container=php74
+```
+
+#### Para Rodar um container com PHP8.2/Nginx:
+```
+scoob --php --version=7.4 --port=8074 --container=php74
 ```
