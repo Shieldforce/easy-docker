@@ -21,7 +21,8 @@ class ImplementPHP
             }
             $argMethod = false;
             if($arg=="--remount") {
-                $argMethod = true;
+                self::$argMethod($arg, $argv);
+                $argsMount[] = $arg;
             }
             if(preg_match("/--(.*?)=/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
