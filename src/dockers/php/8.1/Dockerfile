@@ -76,7 +76,7 @@ RUN apt-get install -y net-tools
 
 # Copy docker configs local
 RUN mkdir "/var/www/docker/"
-COPY ${ROOT_DIR}/docker/* /var/www/docker
+COPY ${ROOT_DIR}/docker /var/www/docker
 
 EXPOSE ${EXPOSE_PORT}
 
