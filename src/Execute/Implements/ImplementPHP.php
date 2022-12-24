@@ -23,7 +23,7 @@ class ImplementPHP
             if(preg_match("/--(.*?)=/", $arg, $matches)) {
                 $argMethod = $matches[1] ?? false;
                 if (method_exists(new ImplementPHP(), $argMethod)) {
-                    self::$argMethod($arg);
+                    self::$argMethod($arg, $argv);
                     $argsMount[] = $arg;
                 }
             }
@@ -33,7 +33,7 @@ class ImplementPHP
         if(count($argsMount) > 0) self::dockerRun();
     }
 
-    private static function version($arg)
+    private static function version($arg, $argv=null)
     {
         $path = str_replace(["/Execute/Implements"], [""], __DIR__);
         $versionValue = str_replace(["--version="], [""], $arg);
@@ -48,7 +48,7 @@ class ImplementPHP
         self::$version = $versionValue;
     }
 
-    private static function port($arg)
+    private static function port($arg, $argv=null)
     {
         $portValue = str_replace(["--port="], [""], $arg);
         if(!is_numeric($portValue)) {
@@ -62,7 +62,7 @@ class ImplementPHP
         self::$port = $portValue;
     }
 
-    private static function container($arg)
+    private static function container($arg, $argv=null)
     {
         $containerValue = str_replace(["--container="], [""], $arg);
         exec("docker ps --filter 'name={$containerValue}'", $output);
@@ -71,15 +71,17 @@ class ImplementPHP
             foreach ($output as $cont) {
                 $message .= $cont."\n";
             }
-            $remount = "Se deseja remontar o container passe a flag --remount";
-            StringError::getError(
-                "Existem containers com nome parecido : {$containerValue}! \n" .$message. "\n". $remount
-            );
+            if(strpos($argv, "--remount")!==false) {
+                $remount = "Se deseja remontar o container passe a flag --remount";
+                StringError::getError(
+                    "Existem containers com nome parecido : {$containerValue}! \n" .$message. "\n". $remount
+                );
+            }
         }
         self::$container = $containerValue;
     }
 
-    private static function remount($arg)
+    private static function remount($arg, $argv=null)
     {
         if(strpos($arg, "--remount")!==false) {
             self::$remount = "--build";
