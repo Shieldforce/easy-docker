@@ -21,6 +21,7 @@ class ImplementPHP
             }
             $argMethod = false;
             if($arg=="--remount") {
+                $argMethod = true;
                 self::remount($arg, $argv);
                 $argsMount[] = $arg;
             }
