@@ -3,12 +3,4 @@
 
 cd /var/www
 
-composer update
-
-chmod -R 775 /var/www/public
-chmod -R 777 /var/www/bootstrap
-chmod -R 777 /var/www/storage
-
-chown www-data:www-data /var/www/
-
 exec "$@"
