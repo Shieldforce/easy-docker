@@ -11,3 +11,9 @@ docker build \
             --build-arg EXPOSE_PORT=${port} \
             --build-arg ROOT_DIR=${root_dir} \
             -f "${root_dir}/Dockerfile" .
+
+docker run \
+            --name ${container} \
+            -v "$(pwd):/var/www/" \
+            -p "${port}:80" \
+            ${container}
