@@ -27,11 +27,11 @@ dir=docker
 
 if [ -d $dir ];
 then
+echo "Diretório Docker ok!"
+else
 mkdir docker
 echo "" >> "docker/run.sh"
 chmod +x docker/run.sh
-else
-echo "Diretório docker não existe!"
 fi
 
 docker build \
