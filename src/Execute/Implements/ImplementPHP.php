@@ -71,7 +71,7 @@ class ImplementPHP
             foreach ($output as $cont) {
                 $message .= $cont."\n";
             }
-            if(strpos(implode(",", $argv), "--remount")!==false) {
+            if(strpos(implode(",", $argv), "--remount")===false) {
                 $remount = "Se deseja remontar o container passe a flag --remount";
                 StringError::getError(
                     "Existem containers com nome parecido : {$containerValue}! \n" .$message. "\n". $remount
