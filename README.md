@@ -29,17 +29,17 @@ scoob --php --version={version} --port={exporse port} --container={contaner name
 
 # Exemplos:
 
-#### Para Rodar um container com PHP7.4/Nginx:
+#### Para Rodar um container com PHP7.4/Nginx | Levantará um server nesse endereço (http://localhost:8074) :
 ```
 scoob --php --version=7.4 --port=8074 --container=php74
 ```
 
-#### Para Rodar um container com PHP8.1/Nginx:
+#### Para Rodar um container com PHP8.1/Nginx | Levantará um server nesse endereço (http://localhost:8081) :
 ```
-scoob --php --version=7.4 --port=8074 --container=php74
+scoob --php --version=8.1 --port=8081 --container=php81
 ```
 
-#### Para Rodar um container com PHP8.2/Nginx:
+#### Para Rodar um container com PHP8.2/Nginx | Levantará um server nesse endereço (http://localhost:8082) :
 ```
-scoob --php --version=7.4 --port=8074 --container=php74
+scoob --php --version=8.2 --port=8082 --container=php82
 ```
