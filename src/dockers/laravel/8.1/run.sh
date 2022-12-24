@@ -32,9 +32,9 @@ else
   fi
 
   if [ -d docker_scoob/laravel ]; then
-    echo "Diretório php ok!"
+    echo "Diretório laravel ok!"
   else
-    cd docker_scoob && mkdir php
+    cd docker_scoob && mkdir laravel
     cd ..
   fi
 
