@@ -14,7 +14,7 @@ remount=$6
 scoob_dir="vendor/shieldforce/easy-docker/src/dockers/laravel/${version}/"
 root_dir=""
 
-if [ $remount == "--build" ]; then
+if [ -z $remount ] && [ $remount == "--build" ]; then
    docker stop ${container}
    docker rm ${container}
    docker image rm ${container}
