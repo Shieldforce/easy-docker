@@ -13,8 +13,8 @@ docker build \
             -f "${root_dir}/Dockerfile" .
 
 docker run \
+            -d \
             --name ${container} \
             -v "$(pwd):/var/www/" \
             -p "${port}:80" \
-            -d \
             ${container}
