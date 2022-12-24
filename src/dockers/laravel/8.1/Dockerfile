@@ -7,6 +7,8 @@ FROM php:${PHP_VERSION}-fpm
 
 ### Args ------------------------
 ARG EXPOSE_PORT
+ARG REDIS_PORT
+ARG MYSQL_PORT
 ARG SCOOB_DIR
 ARG ROOT_DIR
 ARG APP_DIR=/var/www
@@ -91,7 +93,7 @@ RUN apt-get install -y nano
 # Net
 RUN apt-get install -y net-tools
 
-EXPOSE ${EXPOSE_PORT}
+EXPOSE ${EXPOSE_PORT} ${REDIS_PORT} ${MYSQL_PORT} 9000
 
 ENTRYPOINT ["/var/www/docker_scoob/php/8.1/run.sh"]
 
