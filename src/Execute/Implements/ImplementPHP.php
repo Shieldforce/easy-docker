@@ -82,7 +82,7 @@ class ImplementPHP
     private static function remount($arg)
     {
         if(strpos($arg, "--remount")!==false) {
-            self::$remount = "--remount";
+            self::$remount = "--build";
         }
     }
 
