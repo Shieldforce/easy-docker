@@ -6,52 +6,74 @@ ARG EXPOSE_PORT
 ### Version ---------------------
 FROM php:${PHP_VERSION}-fpm
 
-### IMplements --------------------------------------------------
-# Apache 2.4 + PHP-${PHP_VERSION}-FPM
-RUN apt-get update \
-    # Tools
-    && apt-get -y --no-install-recommends install \
-        curl \
-        ca-certificates \
-        nano \
-        zip \
-        unzip \
-        git \
-    # Supervisor
-    && apt-get -y --no-install-recommends install \
-        supervisor \
-    # Install Apache + PHP
-    && apt-get -y --no-install-recommends install \
-        apache2 \
-        docker-php-ext-install xml gd mbstring bcmath zip memcache curl php-xdebug \
-    # Enable Extension + PHP
-    && docker-php-ext-enable xml gd mbstring bcmath zip memcache curl php-xdebug \
-    # Configure Apache + PHP
-    && a2enmod proxy \
-    && a2enmod proxy_fcgi \
-    && a2enmod rewrite \
-    # Clean
-    && rm -rf /var/lib/apt/lists/*
+# Vars --------------------------------------------------
+ARG ROOT_DIR=.
+ARG APP_DIR=/var/www
+WORKDIR $APP_DIR
+# Vars --------------------------------------------------
 
+# enter dir
+RUN cd $APP_DIR
 
-# Supervisor
-RUN mkdir -p /run/php/
-COPY ./supervisord/supervisord.conf /etc/supervisor/supervisord.conf
-COPY ./supervisord/conf/ /etc/supervisor/conf.d/
+# Permissions dir
+RUN chmod 755 -R *
+RUN chown -R www-data: *
 
-# Apache Configuration
-COPY ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+# First update packegist
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends \
+    apt-utils
 
-# PHP Configuration
-COPY ./php/fpm/php.ini /etc/php/${PHP_VERSION}/fpm/php.ini
-COPY ./php/fpm/pool.d/www.conf /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
-COPY ./php/fpm/xdebug.ini /etc/php/${PHP_VERSION}/mods-available/xdebug.ini
+# Install supervisor
+RUN apt-get install -y --no-install-recommends supervisor
+COPY ${ROOT_DIR}/docker/supervisord/supervisord.conf /etc/supervisor
+COPY ${ROOT_DIR}/docker/supervisord/conf /etc/supervisord.d/
 
-COPY ./scripts/start.sh /start.sh
-RUN chmod 755 /start.sh
-### IMplements --------------------------------------------------
+# packs
+RUN apt-get update && apt-get install -y \
+    zlib1g-dev \
+    libzip-dev \
+    unzip \
+    libpng-dev \
+    libpq-dev \
+    libxml2-dev
 
-### Port Expose ----------------
+# Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install plus extensions php
+RUN docker-php-ext-install zip iconv simplexml pcntl gd fileinfo \
+    mysqli pdo pdo_mysql pdo_pgsql pgsql session xml
+
+#COPY php.ini-production /usr/local/etc/php/php.ini
+COPY ${ROOT_DIR}/docker/php/php.ini /usr/local/etc/php/php.ini
+
+# Install nginx
+RUN apt-get install nginx -y
+COPY ${ROOT_DIR}/docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ${ROOT_DIR}/docker/nginx/sites /etc/nginx/sites-available
+
+# Clear repositories
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install packs
+RUN apt-get update && apt upgrade -y
+
+# Install wget
+RUN apt-get install -y wget
+
+#Install systemd
+RUN apt-get install -y systemd
+
+# Install Nano
+RUN apt-get install -y nano
+
+# Net
+RUN apt-get install -y net-tools
+
 EXPOSE ${EXPOSE_PORT}
 
-CMD ["/bin/bash", "/start.sh"]
+# finish dockerfile
+ADD ./docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
+ADD ./docker/supervisord/conf /etc/supervisord.d/
+CMD /usr/bin/supervisord -n
