@@ -8,8 +8,14 @@ fi
 version=$1
 port=$2
 container=$3
-remount=$5
+remount=$4
 root_dir="vendor/shieldforce/easy-docker/src/dockers/php/${version}/"
+
+if [ $remount == "--build" ]; then
+   docker stop ${container}
+   docker rm ${container}
+   docker image rm ${container}
+fi
 
 docker build \
             -t ${container} \
