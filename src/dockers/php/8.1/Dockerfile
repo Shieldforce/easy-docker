@@ -77,7 +77,7 @@ RUN apt-get install -y net-tools
 
 # Copy docker configs local
 COPY ${SCOOB_DIR}/docker/run.sh ${ROOT_DIR}/docker/run.sh
-RUN chmod +x /var/www/docker/run.sh
+RUN chmod +x ${ROOT_DIR}/docker/run.sh
 
 EXPOSE ${EXPOSE_PORT}
 
