@@ -1,8 +1,8 @@
 ### Args ------------------------
-ARG PHP_VERSION
-ARG EXPOSE_PORT
-ARG ROOT_DIR
-ARG APP_DIR=/var/www
+ARG PHP_VERSION \
+ARG EXPOSE_PORT \
+ARG ROOT_DIR \
+ARG APP_DIR=/var/www \
 ### Args ------------------------
 
 ### Version ---------------------
