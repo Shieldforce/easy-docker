@@ -23,6 +23,7 @@ echo "";
 echo "";
 echo "";
 
+mkdir docker
 echo "" >> "docker/run.sh"
 
 docker build \
