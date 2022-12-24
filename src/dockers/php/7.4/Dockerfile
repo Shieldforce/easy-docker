@@ -26,6 +26,11 @@ RUN apt-get install -y --no-install-recommends \
 
 # Install supervisor
 RUN apt-get install -y --no-install-recommends supervisor
+
+RUN echo "tst" >> config_test.txt
+
+
+
 COPY ${ROOT_DIR}/docker/supervisord/supervisord.conf /etc/supervisor
 COPY ${ROOT_DIR}/docker/supervisord/conf /etc/supervisord.d/
 
