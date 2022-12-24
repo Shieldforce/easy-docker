@@ -153,9 +153,11 @@ class ImplementLaravel
             return;
         }
 
-        $version    = self::$version;
-        $port       = self::$port;
-        $container  = self::$container;
+        $version          = self::$version;
+        $port             = self::$port;
+        $redis_port       = self::$redis_port;
+        $mysql_port       = self::$mysql_port;
+        $container        = self::$container;
 
         $path       = str_replace(["/Execute/Implements"], [""], __DIR__);
 
