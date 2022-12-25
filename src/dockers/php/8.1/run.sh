@@ -62,3 +62,23 @@ docker run \
             -v "$(pwd):/var/www/" \
             -p "${port}:80" \
             ${container}
+
+
+echo "   -";
+echo "   -";
+echo "   -";
+echo "   -";
+echo "   -";
+echo "   -";
+echo "      ----              ------   ------   -----   -----  |------ ";
+echo "    --------           |        |        |     | |     | |      |";
+echo "   |  -  -  |           ------  |        |     | |     | |------ ";
+echo "       --   (^^^= - - -       | |        |     | |     | |      |";
+echo "       ||  //           ------   ------   -----   -----  |------ ";
+echo "       || //                                                     ";
+echo "       ||                                                        ";
+echo "   --------------------------------------------------------------";
+echo "   PRONTO PODE TRABALHAR AVONTADE AGORA!";
+echo "   - Os serviços liberados foram :";
+echo "   - ";
+echo "   - Web      : localhost:8081";

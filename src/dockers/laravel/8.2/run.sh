@@ -62,3 +62,28 @@ docker run \
             -v "$(pwd):/var/www/" \
             -p "${port}:80" \
             ${container}
+
+
+echo "   -";
+echo "   -";
+echo "   -";
+echo "   -";
+echo "   -";
+echo "   -";
+echo "      ----              ------   ------   -----   -----  |------ ";
+echo "    --------           |        |        |     | |     | |      |";
+echo "   |  -  -  |           ------  |        |     | |     | |------ ";
+echo "       --   (^^^= - - -       | |        |     | |     | |      |";
+echo "       ||  //           ------   ------   -----   -----  |------ ";
+echo "       || //                                                     ";
+echo "       ||                                                        ";
+echo "   --------------------------------------------------------------";
+echo "   PRONTO PODE TRABALHAR AVONTADE AGORA!";
+echo "   - Os serviços liberados foram :";
+echo "   - ";
+echo "   - Web      : localhost:9082";
+echo "   - Msql     : localhost:33682";
+echo "   - Redis    : localhost:63782";
+echo "   - Cron     : Executando...";
+echo "   - Horizon  : Executando...";
+echo "   -";
