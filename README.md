@@ -44,17 +44,17 @@ scoob --php --version=8.1 --port=8081 --container=php81
 scoob --php --version=8.2 --port=8082 --container=php82
 ```
 
-#### Para Rodar um container com Laravel/PHP7.4/Nginx | Levantará um server nesse endereço (http://localhost:9074) :
+#### Para Rodar um container com Laravel/PHP7.4/Nginx/MariaDB-10/Redis/Horizon/Cron | Levantará um server nesse endereço (http://localhost:9074) :
 ```
 scoob --laravel --version=7.4 --port=9074 --container=laravel-php74
 ```
 
-#### Para Rodar um container com Laravel/PHP8.1/Nginx | Levantará um server nesse endereço (http://localhost:9081) :
+#### Para Rodar um container com Laravel/PHP8.1/Nginx/MariaDB-10/Redis/Horizon/Cron | Levantará um server nesse endereço (http://localhost:9081) :
 ```
 scoob --laravel --version=8.1 --port=9081 --container=laravel-php81
 ```
 
-#### Para Rodar um container com Laravel/PHP8.2/Nginx | Levantará um server nesse endereço (http://localhost:9082) :
+#### Para Rodar um container com Laravel/PHP8.2/Nginx/MariaDB-10/Redis/Horizon/Cron | Levantará um server nesse endereço (http://localhost:9082) :
 ```
 scoob --laravel --version=8.2 --port=9082 --container=laravel-php82
 ```
